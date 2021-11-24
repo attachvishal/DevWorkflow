@@ -1,2 +1,39 @@
 package com.united.sample.drools;
 
+
+import java.util.LinkedList;
+import java.util.ArrayList;
+import com.united.entity.*;
+import java.util.List;
+import com.united.result.*;
+import java.util.stream.Collectors;
+
+rule "Matching Passenger check"
+no-loop true
+lock-on-active true
+salience 90
+dialect "java"
+when
+
+       $status :RuleResponse()
+        /**
+            New PNRGroup
+        */
+     $pnrNew:PNRGroup(pnrType == "NEW")
+     $NEW_PASSENGER_LIST : LinkedList(size >= 1) from collect ( Passenger() from $pnrNew.passengers)
+    /**
+      OLD PNRGroup
+    */
+    $pnrOld: PNRGroup(this != $pnrNew,$OLD_PASSENGER_LIST :passengers, pnrType == "OLD")
+    $COMMON_PASSENGER_LIST : LinkedList(size >= 1) from collect (Passenger(this memberOf $NEW_PASSENGER_LIST) from $pnrOld.passengers)
+
+then
+        System.out.println("Matching Passenger check executed");
+       ArrayList<Passenger> oldPassengerList = new ArrayList<Passenger>($OLD_PASSENGER_LIST);
+       oldPassengerList.removeAll($COMMON_PASSENGER_LIST);
+       $status.setRemovedPassengerList(oldPassengerList);
+
+       ArrayList<Passenger> newPassengerList = new ArrayList<Passenger>($NEW_PASSENGER_LIST);
+       newPassengerList.removeAll($COMMON_PASSENGER_LIST);
+       $status.setAddedPassengerList(newPassengerList);
+end
