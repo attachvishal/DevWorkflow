@@ -31,4 +31,44 @@ public class Passenger implements java.io.Serializable {
     }
 
 
+public SecureFlightData getSecureFlightData() {
+        return secureFlightData;
+    }
+
+    public void setSecureFlightData(SecureFlightData secureFlightData) {
+        this.secureFlightData = secureFlightData;
+    }
+
+    public String getPassengerSurname() {
+        return passengerSurname;
+    }
+
+    public void setPassengerSurname(String passengerSurname) {
+        this.passengerSurname = passengerSurname;
+    }
+
+    public String getPassengerFirstName() {
+        return passengerFirstName;
+    }
+
+    public void setPassengerFirstName(String passengerFirstName) {
+        this.passengerFirstName = passengerFirstName;
+    }
+
+    public String getPassengerSurnameKey() {
+        return passengerSurnameKey;
+    }
+
+    public void setPassengerSurnameKey(String passengerSurnameKey) {
+        this.passengerSurnameKey = passengerSurnameKey;
+    }
+
+    public String getPassengerInitialKey() {
+        return passengerInitialKey;
+    }
+
+    public void setPassengerInitialKey(String passengerInitialKey) {
+        this.passengerInitialKey = passengerInitialKey;
+    }
+
 }
