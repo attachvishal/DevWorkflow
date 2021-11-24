@@ -31,5 +31,35 @@ public class RuleResponse implements java.io.Serializable {
                 '}';
     }
 
+ public List<Passenger> getRemovedPassengerList() {
+        return removedPassengerList;
+    }
 
+    public void setRemovedPassengerList(List<Passenger> removedPassengerList) {
+        this.removedPassengerList = removedPassengerList;
+    }
+
+    public List<Passenger> getAddedPassengerList() {
+        return addedPassengerList;
+    }
+
+    public void setAddedPassengerList(List<Passenger> addedPassengerList) {
+        this.addedPassengerList = addedPassengerList;
+    }
+
+    public List<Passenger> getRemovedFlightSegmentList() {
+        return removedFlightSegmentList;
+    }
+
+    public void setRemovedFlightSegmentList(List<Passenger> removedFlightSegmentList) {
+        this.removedFlightSegmentList = removedFlightSegmentList;
+    }
+
+    public List<Passenger> getAddedFlightSegmentList() {
+        return addedFlightSegmentList;
+    }
+
+    public void setAddedFlightSegmentList(List<Passenger> addedFlightSegmentList) {
+        this.addedFlightSegmentList = addedFlightSegmentList;
+    }
 }
