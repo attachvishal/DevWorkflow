@@ -34,14 +34,6 @@ public class Passenger implements java.io.Serializable {
     }
 
 
-public SecureFlightData getSecureFlightData() {
-        return secureFlightData;
-    }
-
-    public void setSecureFlightData(SecureFlightData secureFlightData) {
-        this.secureFlightData = secureFlightData;
-    }
-
     public String getPassengerSurname() {
         return passengerSurname;
     }
