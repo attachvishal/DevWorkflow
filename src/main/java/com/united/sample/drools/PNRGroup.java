@@ -6,9 +6,17 @@ package com.united.sample.drools;
 
 public class PNRGroup implements java.io.Serializable {
 
+    private String pnrType;
+    private List<Passenger> passengers;
+    private List<FlightSegment> flightSegments;
+
+
     static final long serialVersionUID = 1L;
 
     public PNRGroup() {
+        
+        
+        
     }
 
 
