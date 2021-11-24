@@ -8,10 +8,27 @@ public class Passenger implements java.io.Serializable {
 
     static final long serialVersionUID = 1L;
 
+    private String passengerSurname ;
+    private String passengerFirstName ;
+    private String passengerSurnameKey ;
+    private String passengerInitialKey ;
+
     public Passenger() {
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Passenger passenger = (Passenger) o;
+        return Objects.equals(passengerSurname, passenger.passengerSurname) &&
+                Objects.equals(passengerFirstName, passenger.passengerFirstName);
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(passengerSurname, passengerFirstName);
+    }
 
 
 }
