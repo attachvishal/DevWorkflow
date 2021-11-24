@@ -18,7 +18,39 @@ public class PNRGroup implements java.io.Serializable {
         
         
     }
+    
+    public String getPnrType() {
+        return pnrType;
+    }
 
+    public void setPnrType(String pnrType) {
+        this.pnrType = pnrType;
+    }
+
+    public List<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<Passenger> passengers) {
+        this.passengers = passengers;
+    }
+
+    public List<FlightSegment> getFlightSegments() {
+        return flightSegments;
+    }
+
+    public void setFlightSegments(List<FlightSegment> flightSegments) {
+        this.flightSegments = flightSegments;
+    }
+    
+     @Override
+    public String toString() {
+        return "PNRGroup{" +
+                "pnrType='" + pnrType + '\'' +
+                ", passengers=" + passengers +
+                ", flightSegments=" + flightSegments +
+                '}';
+    }
 
 
 
