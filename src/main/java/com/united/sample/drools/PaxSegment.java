@@ -1,4 +1,4 @@
-package com.myspace.DevWorkflow;
+package com.united.sample.drools;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -128,6 +128,6 @@ public class PaxSegment implements java.io.Serializable {
         PaxSegmentList.add(paxSegment2);
         passenger.setPaxSegments(PaxSegmentList);
 
-
+    }
 
 }
