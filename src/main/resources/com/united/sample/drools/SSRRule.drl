@@ -1,2 +1,46 @@
 package com.united.sample.drools;
 
+
+import java.util.LinkedList;
+import java.util.ArrayList;
+import com.united.sample.drools.*;
+import java.util.*;
+import com.united.result.*;
+import java.util.stream.Collectors;
+
+rule "Matching SSR check"
+no-loop true
+lock-on-active true
+salience 90
+dialect "java"
+when
+   $pnrNEW:PNRGroup(pnrType == "NEW" )
+    $mapofNEW: HashMap( ) from accumulate (
+               Passenger( $paxSegments : paxSegments ) from $pnrNEW.passengers
+               and
+               $b: PaxSegment($NEW_SSR_List : SSR) from $paxSegments
+               ,
+               init( HashMap map_NEW = new HashMap(); ),
+               action( map_NEW.put( $b.getFlightNumber()+"-"+$b.getOrigin()+ "-"+$b.getDestination() + "-"+ $b.getScheduledDepartureDate(),$NEW_SSR_List); ),
+               result( map_NEW )
+           )
+
+    //
+    //  OLD Passenger
+    //
+    // first identify the list of new PAX Segment and put it in hashmap with SSR
+   $pnrOLD:PNRGroup(pnrType == "OLD" )
+    $mapofOld2: HashMap( ) from accumulate (
+               $pass: Passenger( $paxSegments : paxSegments ) from $pnrOLD.passengers
+               and
+               $a: PaxSegment($SSR_List : SSR) from $paxSegments
+               ,
+               init( HashMap map_old = new HashMap(); ),
+               action( map_old.put( $pass.getPassengerFirstName() +" >>" + $a.getFlightNumber()+"-"+$a.getOrigin()+ "-"+$a.getDestination() + "-"+ $a.getScheduledDepartureDate(),$SSR_List); ),
+               result( map_old )
+           )
+
+then
+    System.out.println("NEW PAX  "+$mapofNEW);
+    System.out.println("OLD PAX  "+$mapofOld2 );
+end
