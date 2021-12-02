@@ -16,6 +16,12 @@ public class SSR implements java.io.Serializable {
     public SSR() {
     }
 
+    public SSR(String code, String comment, String rawSSR, String itemNum) {
+        Code = code;
+        Comment = comment;
+        RawSSR = rawSSR;
+        ItemNum = itemNum;
+    }
    
 
     public String getCode() {
