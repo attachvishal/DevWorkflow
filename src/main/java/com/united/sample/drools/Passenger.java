@@ -65,5 +65,13 @@ public class Passenger implements java.io.Serializable {
     public void setPassengerInitialKey(String passengerInitialKey) {
         this.passengerInitialKey = passengerInitialKey;
     }
+    
+      public ArrayList<PaxSegment> getPaxSegments() {
+        return paxSegments;
+    }
+
+    public void setPaxSegments(ArrayList<PaxSegment> paxSegments) {
+        this.paxSegments = paxSegments;
+    }
 
 }
