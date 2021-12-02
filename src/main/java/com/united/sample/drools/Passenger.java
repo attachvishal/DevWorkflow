@@ -16,6 +16,8 @@ public class Passenger implements java.io.Serializable {
     private String passengerSurnameKey ;
     private String passengerInitialKey ;
 
+     private ArrayList<PaxSegment> paxSegments;
+
     public Passenger() {
     }
 
